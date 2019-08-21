@@ -36,21 +36,51 @@ Note that the answer must be a substring, `pwke` is a subsequence and not a subs
 Build Requirements
 ------------------
 ```
-# Build Requirements here
+Java 8
+  Any bash or command line
 ```
 
 
 How to build
 ------------
 ```
-# instructions here
+  Here is the main function that returns the length of the longest substring.
+  public static int longestSubStr(String a) {
+    boolean[] flag = new boolean[256];
+    int rest = 0; // Result value
+    int aux = 0; // auxiliar for operations
+    char[] arr = a.toCharArray();
+    if (a != null) {
+      for (int i = 0; i < arr.length; i++) {
+        char current = arr[i];
+        if (flag[current]) {
+          rest = Math.max(rest, i - aux);
+          for (int k = aux; k < i; k++) {
+            if (arr[k] == current) {
+              aux = k + 1;
+              break;
+            }
+            flag[arr[k]] = false;
+          }
+        }
+        else {
+          flag[current] = true;
+        }
+      }
+      rest = Math.max(arr.length - aux, rest);
+      return rest;
+    }
+    return 0;
+  }
 ```
 
 
 How to Run
 ----------
 ```
-# instructions here
+  Execute the .java file in any command line
+    javac name_of_file.java
+    java name_of_file
 ```
 
 
@@ -60,11 +90,3 @@ General instructions
 2. Submit your code to your personal fork.
 3. Don't forget to update this `README.md` file with your project's `requirements`, `build` and `how to run` sections.
 4. Have fun and don't forget the next section.
-
-
-How to submit your work
-=======================
-```
-GITHUB_USER=<your_github_user>  make submit
-```
-More details at: [Classify API](../../classify.md)
