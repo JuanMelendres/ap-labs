@@ -23,15 +23,23 @@ Using the command Time to measure the execution time of cat and mycat.
 These are the results:
 
 -> Small Text:
+
   - Small text Cat:
+
 ![Small text Cat](smatextcat.png)
+
   - Small text MyCat:
+
 ![Small text MyCat](smalltextmycat.png)
 
 -> Big Text:
+
   - Big text Cat
+
 ![Big text Cat](bigtextcat.png)
+
   - Big text MyCat
+  
 ![Big text MyCat](bigtextmycat.png)
 
 For conclusion my solution is faster with small text than the original cat, but with large files the original cat is faster. All is because the implementation my solution is basic compare with the original.
