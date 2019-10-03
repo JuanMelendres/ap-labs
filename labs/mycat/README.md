@@ -21,10 +21,14 @@ redirect output in terminal or files.
 My cat command only supports view contain.
 Using the command Time to measure the execution time of cat and mycat.
 These are the results:
+
 -> Small Text:
+
 ![Small text Cat](smatextcat.png)
 ![Small text MyCat](smalltextmycat.png)
+
 -> Big Text:
+
 ![Small text Cat](bigtextcat.png)
 ![Small text MyCat](bigtextmycat.png)
 
