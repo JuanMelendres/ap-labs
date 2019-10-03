@@ -1,39 +1,31 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <string.h>
 
-/* filecopy:  copy file ifp to file ofp */
-void filecopy(FILE *ifp, FILE *ofp)
-{
-    int c;
+#define  BYTES 128
 
-    while ((c = getc(ifp)) != EOF)
-        putc(c, ofp);
-
-}
-
-/* cat:  concatenate files, version 2 */
-int main(int argc, char *argv[])
-{
-    FILE *fp;
-    void filecopy(FILE *, FILE *);
-    char *prog = argv[0];   /* program name for errors */
-
-    if (argc == 1)  /* no args; copy standard input */
-        filecopy(stdin, stdout);
-    else
-        while (--argc > 0)
-            if ((fp = fopen(*++argv, "r")) == NULL) {
-                fprintf(stderr, "%s: can′t open %s\n",
-			prog, *argv);
-                return 1;
-            } else {
-                filecopy(fp, stdout);
-                fclose(fp);
-            }
-
-    if (ferror(stdout)) {
-        fprintf(stderr, "%s: error writing stdout\n", prog);
-        return 2;
-    }
-
-    return 0;
+int main(int argc, char const *argv[]) {
+  if (argc < 2) {
+    printf("Usage: ./mycat <file>\n");
+    exit(1);
+  }
+  int fileRead, fileWrite;
+  fileRead = open(argv[1], O_RDONLY);
+  if (fileRead < 0) {
+    char *message = "Message: No such File or Directory.\n";
+    int len = strlen(message);
+    write(1, message, len);
+    //perror("Error message: ");
+    exit(0);
+  }
+  char *buffer;
+  buffer = calloc(BYTES, sizeof(char));
+  while ((read(fileRead, buffer, BYTES-1)) > 0) {
+    write(1, buffer, BYTES);
+    memset(buffer, '\0', BYTES);
+  }
+  close(fileRead);
+  exit(0);
 }
