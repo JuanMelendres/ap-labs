@@ -17,6 +17,23 @@ int errorf(const char *format, ...)
 int panicf(const char *format, ...)
 ```
 
+Building
+--------
+
+```
+gcc -c logger.c -o logger.o
+gcc -c testLogger.c -o testLogger.o
+gcc logger.o testLogger.o -o main
+rm logger.o testLogger.o
+```
+
+Running
+-------
+
+```
+./main
+```
+
 General instructions
 --------------------
 - Use the `logger.c` file for your implementation.
