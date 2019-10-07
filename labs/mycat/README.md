@@ -39,10 +39,10 @@ These are the results:
 ![Big text Cat](bigtextcat.png)
 
   - Big text MyCat
-  
+
 ![Big text MyCat](bigtextmycat.png)
 
-For conclusion my solution is faster with small text than the original cat, but with large files the original cat is faster. All is because the implementation my solution is basic compare with the original.
+For conclusion my solution is faster with small text than the original cat, but with large files the original cat is faster. Because my implementation is basic compare with the original.
 
 How to submit your work
 =======================
