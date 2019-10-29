@@ -1,17 +1,24 @@
-// Clock2 is a concurrent TCP server that periodically writes the time.
+// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
+// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+// See page 222.
+
+// Clock is a TCP server that periodically writes the time.
 package main
 
 import (
+	"flag"
 	"io"
 	"log"
 	"net"
+	"os"
 	"time"
 )
 
-func handleConn(c net.Conn) {
+func handleConn(c net.Conn, l *time.Location) {
 	defer c.Close()
 	for {
-		_, err := io.WriteString(c, time.Now().Format("15:04:05\n"))
+		_, err := io.WriteString(c, time.Now().In(l).Format("15:04:05\n"))
 		if err != nil {
 			return // e.g., client disconnected
 		}
@@ -20,16 +27,28 @@ func handleConn(c net.Conn) {
 }
 
 func main() {
-	listener, err := net.Listen("tcp", "localhost:9090")
+
+	strPtr := flag.String("port", "8000", "network port to listen on")
+	flag.Parse()
+
+	loc, err := time.LoadLocation(os.Getenv("TZ"))
+	if err != nil {
+		log.Fatal(err)
+		os.Exit(1)
+	}
+
+	listener, err := net.Listen("tcp", "localhost:"+*strPtr)
 	if err != nil {
 		log.Fatal(err)
 	}
+	//!+
 	for {
 		conn, err := listener.Accept()
 		if err != nil {
 			log.Print(err) // e.g., connection aborted
 			continue
 		}
-		go handleConn(conn) // handle connections concurrently
+		go handleConn(conn, loc) // handle connections concurrently
 	}
+	//!-
 }
