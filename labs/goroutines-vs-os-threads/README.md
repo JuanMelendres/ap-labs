@@ -13,6 +13,20 @@ General Requirements and Considerations
 - Don't forget to handle errors properly.
 - Coding best practices implementation will be also considered.
 
+Run
+---------------------------------------
+
+- Exercise9.4
+
+```
+go run exercise9-4.go -pipes <number of pipes> -verbose false
+```
+
+- Exercise9.5
+
+```
+go run exercise9-5.go
+```
 
 How to submit your work
 =======================
