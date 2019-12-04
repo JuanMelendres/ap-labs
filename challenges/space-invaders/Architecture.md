@@ -90,7 +90,7 @@ func populate() {
 
 The following graph was used for the Space Invaders
 
-![Space Invaders](spaceInvaders.png)
+![Graph](Graph.png)
 
 ### Libraries
 - PixelGL
