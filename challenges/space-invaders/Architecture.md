@@ -11,6 +11,8 @@
 
 Space invaders has a empiric based architecture. It consists of one .go files that will be described bellow.
 
+![Space Invaders](space-invaders.png)
+
 [main.go](spaceInvadersWithGoRoutines)
 - Main file, it constains all the program, functions and the creation of a Window.
 
