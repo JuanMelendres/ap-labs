@@ -88,6 +88,7 @@ func (p *spaceShip) actions() { // for spaceShip (player)
       p.alive = false
       ms.registerChannel <- msg{cmd: "Remove", p: *p}
       if p.kind == "Gun" {
+        fmt.Println("You lose :(")
         fmt.Println("Damn and blast")
         <-make(chan bool)
       }
