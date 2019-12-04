@@ -12,6 +12,7 @@
 Space invaders has a empiric based architecture. It consists of one .go files that will be described bellow.
 
 ![Space Invaders](space-invaders.png)
+![In Game](game.png)
 
 [main.go](spaceInvadersWithGoRoutines)
 - Main file, it constains all the program, functions and the creation of a Window.
@@ -89,7 +90,6 @@ func populate() {
 ### Graph
 
 The following graph was used for the Space Invaders
-![Space Invaders](space-invaders.png)
 ![Graph](Graph.png)
 
 ### Libraries
