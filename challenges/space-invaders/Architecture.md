@@ -88,7 +88,7 @@ func populate() {
 
 The following graph was used for the Space Invaders
 
-![Space Inavder](spaceInvader.jpg)
+![Space Inavder](spaceInvader.png)
 
 ### Libraries
 - PixelGL
