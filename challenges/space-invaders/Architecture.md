@@ -89,7 +89,7 @@ func populate() {
 ### Graph
 
 The following graph was used for the Space Invaders
-
+![Space Invaders](space-invaders.png)
 ![Graph](Graph.png)
 
 ### Libraries
